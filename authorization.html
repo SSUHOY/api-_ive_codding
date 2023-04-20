@@ -8,6 +8,17 @@
 
 <body>
     <h1>Список задач</h1>
+    <div class="form">
+        <h3 class="form-title">Форма входа</h3>
+        <div class="form-row">
+            Логин:
+            <input type="text" id="text-input" class="input" placeholder="login" />
+            Пароль:
+            <input type="text" id="text-input" class="input" placeholder="password" />
+        </div>
+        <br />
+        <button class="button" id="add-button">Добавить</button>
+    </div>
     <ul class="tasks" id="list">
         <!-- <!— Список рендерится из JS —> -->
     </ul>
@@ -24,6 +35,11 @@
 </body>
 
 <script>
+
+    // План
+    // 1. Реализизовать форму логина в приложении
+    // 2. Релизовать форму регистрации
+
     const buttonElement = document.getElementById("add-button");
     const listElement = document.getElementById("list");
     const textInputElement = document.getElementById("text-input");
