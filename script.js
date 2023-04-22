@@ -5,7 +5,7 @@
 // *Отрефакторить приложение на модули 
 // 2. Релизовать форму регистрации
 
-import { getToDos } from "./api.js";
+import { deleteToDos, getToDos, postToDos } from "./api.js";
 
 const buttonElement = document.getElementById("add-button");
 const listElement = document.getElementById("list");
@@ -110,15 +110,8 @@ const renderApp = () => {
             const id = deleteButton.dataset.id;
 
             // подписываемся на успешное завершение запроса с помощью then
-            fetch("https://webdev-hw-api.vercel.app/api/todos/" + id, {
-                method: "DELETE",
-                headers: {
-                    Authorization: token,
-                },
-            })
-                .then((response) => {
-                    return response.json();
-                })
+            deleteToDos({ token, id })
+
                 .then((responseData) => {
                     // получили данные и рендерим их в приложении
                     tasks = responseData.todos;
@@ -136,18 +129,10 @@ const renderApp = () => {
         buttonElement.textContent = "Задача добавляеятся...";
 
         // подписываемся на успешное завершение запроса с помощью then
-        fetch(host, {
-            method: "POST",
-            body: JSON.stringify({
-                text: textInputElement.value,
-            }),
-            headers: {
-                Authorization: token,
-            },
+        postToDos({
+            token, 
+            text:textInputElement.value
         })
-            .then((response) => {
-                return response.json();
-            })
             .then(() => {
                 // TODO: кинуть исключение
                 textInputElement.value = "";
