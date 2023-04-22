@@ -3,6 +3,8 @@
 // *Перенести всю разметку в рендер функцию
 // *Сделать форму входа динамической (+)
 // *Отрефакторить приложение на модули 
+//   * api модуль (+)
+//   * перенос всех fetch в модули (+) 
 // 2. Релизовать форму регистрации
 
 import { deleteToDos, getToDos, postToDos } from "./api.js";
@@ -128,7 +130,6 @@ const renderApp = () => {
         buttonElement.disabled = true;
         buttonElement.textContent = "Задача добавляеятся...";
 
-        // подписываемся на успешное завершение запроса с помощью then
         postToDos({
             token, 
             text:textInputElement.value
