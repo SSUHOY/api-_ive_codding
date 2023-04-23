@@ -7,7 +7,7 @@
 //   * перенос всех fetch в модули (+) 
 //   *вытащить компонент списка задач и форму добавления в отдельный модуль (+)
 // * вытащить логин компонент в отдельный модуль (+)
-// 
+// *вывести автора поста в список
 // 2. Релизовать форму регистрации
 
 import { deleteToDos, getToDos, postToDos } from "./api.js";
@@ -54,7 +54,7 @@ const renderApp = () => {
             return `
           <li class="task">
             <p class="task-text">
-              ${task.text}
+              ${task.text} {Создал: ${task.user?.name ?? "Неизвестно"}}
               <button data-id="${task.id}" class="button delete-button">Удалить</button>
             </p>
           </li>`;
