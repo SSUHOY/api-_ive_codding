@@ -11,7 +11,7 @@
 // 2. Релизовать форму регистрации
 
 import { deleteToDos, getToDos, postToDos } from "./api.js";
-import { renderLoginComponent } from "./login-component.js";
+import { renderLoginComponent } from "./components/login-component.js";
 
 const buttonElement = document.getElementById("add-button");
 const listElement = document.getElementById("list");
