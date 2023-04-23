@@ -1,4 +1,6 @@
-export function renderLoginComponent ({ appEl, setToken, fetchTodosAndRender }) {
+import { login } from "../api.js";
+
+export function renderLoginComponent({ appEl, setToken, fetchTodosAndRender }) {
     const appHtml = `<h1>Список задач</h1>
     <div class="form">
     <h3 class="form-title">Форма входа</h3>
@@ -12,13 +14,21 @@ export function renderLoginComponent ({ appEl, setToken, fetchTodosAndRender }) 
     <br />
     <button class="button" id="login-button">Войти</button>
     </div>`
-;
+        ;
 
-appEl.innerHTML = appHtml;
+    appEl.innerHTML = appHtml;
 
-document.getElementById('login-button').addEventListener('click', () => {
-setToken('Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k')
+    document.getElementById('login-button').addEventListener('click', () => {
+        setToken('Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k');
 
-fetchTodosAndRender();
-});
+        fetchTodosAndRender();
+        login({
+            login: 'admin',
+            password: 'admin',
+        }).then((user) => {
+            console.log(user);
+            setToken(`Bearer ${user.user.token}`);
+            fetchTodosAndRender();
+        });
+    });
 }

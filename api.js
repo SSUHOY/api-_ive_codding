@@ -1,4 +1,5 @@
-const host = 'https://webdev-hw-api.vercel.app/api/v2/todos'
+const host = "https://webdev-hw-api.vercel.app/api/v2/todos"
+
 
 export function getToDos({ token }) {
     return fetch(host, {
@@ -48,15 +49,13 @@ export function postToDos({ token, text }) {
 }
 
 // документация: // https://github.com/GlebkaF/webdev-hw-api/blob/main/pages/api/user/README.md#%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F
-export function Login({ token, text }) {
-    return fetch(host, {
+export function login({ login, password }) {
+    return fetch("https://webdev-hw-api.vercel.app/api/user/login", {
         method: "POST",
         body: JSON.stringify({
-            text,
+           login,
+           password,
         }),
-        headers: {
-            Authorization: token,
-        },
     })
         .then((response) => {
             return response.json();
