@@ -8,16 +8,17 @@
 //   *вытащить компонент списка задач и форму добавления в отдельный модуль (+)
 // * вытащить логин компонент в отдельный модуль (+)
 // *вывести автора поста в список (+)
-// *реализовали форму входа (+)
+// *реализовали форму входа ()
 // 2. Релизовать форму регистрации
 
 import { deleteToDos, getToDos, postToDos } from "./api.js";
 import { renderLoginComponent } from "./components/login-component.js";
 
+
 const buttonElement = document.getElementById("add-button");
 const listElement = document.getElementById("list");
 const textInputElement = document.getElementById("text-input");
-
+import { formatDateToRu, formatDateToUs } from "./lib/formatDate/formatDate.js"
 
 let tasks = [];
 
@@ -50,6 +51,7 @@ const renderApp = () => {
         })
         return;
     }
+
     const tasksHtml = tasks
         .map((task) => {
             return `
@@ -58,6 +60,7 @@ const renderApp = () => {
               ${task.text} {Создал: ${task.user?.name ?? "Неизвестно"}}
               <button data-id="${task.id}" class="button delete-button">Удалить</button>
             </p>
+            <p> <i>Задача создана: ${formatDateToRu(new Date(task.created_at))} </i> </p>
           </li>`;
         })
         .join("");
@@ -89,7 +92,7 @@ const renderApp = () => {
 
     //   Переменные
     const buttonElement = document.getElementById("add-button");
-    const listElement = document.getElementById("list");
+    // const listElement = document.getElementById("list");
     const textInputElement = document.getElementById("text-input");
 
     const deleteButtons = document.querySelectorAll(".delete-button");
