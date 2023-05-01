@@ -1,4 +1,5 @@
 import { loginUser, registerUser } from "../api.js";
+import _ from 'lodash';
 
 export function renderLoginComponent({ appEl, setToken, fetchTodosAndRender }) {
 
@@ -85,7 +86,8 @@ const renderForm = () => {
             registerUser({
                 login: login,
                 password: password,
-                name: name,
+                name: _.capitalize(name),
+                // Приводим первый символ к вверхнему ригистру+осталную часть к нижнему регистру
             }).then((user) => {
                 console.log(user);
                 setToken(`Bearer ${user.user.token}`);

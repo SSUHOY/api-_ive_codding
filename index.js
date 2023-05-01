@@ -13,6 +13,7 @@
 
 import { deleteToDos, getToDos, postToDos } from "./api.js";
 import { renderLoginComponent } from "./components/login-component.js";
+import { format } from "date-fns";
 
 
 const buttonElement = document.getElementById("add-button");
@@ -51,16 +52,17 @@ const renderApp = () => {
         })
         return;
     }
-
+// const country = 'us';
     const tasksHtml = tasks
         .map((task) => {
+            const createDate = format(new Date(task.created_at), 'dd/MM/yyyy hh:mm:ss');
             return `
           <li class="task">
             <p class="task-text">
               ${task.text} {Создал: ${task.user?.name ?? "Неизвестно"}}
               <button data-id="${task.id}" class="button delete-button">Удалить</button>
             </p>
-            <p> <i>Задача создана: ${formatDateToRu(new Date(task.created_at))} </i> </p>
+            <p> <i>Задача создана: ${createDate} </i> </p>
           </li>`;
         })
         .join("");

@@ -1,0 +1,29 @@
+{
+  "name": "libries",
+  "version": "1.0.0",
+  "description": "lib",
+  "main": "api.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "webpack --mode development --watch"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "jivoii",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "api--live--codding"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
+  }
+}
